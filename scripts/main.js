@@ -15,43 +15,50 @@ function computerPlay() {
     }
 }
 
-function playRound(playerChoice, computerChoice) {
+function playRound(e) {
+
+    const computerChoice = computerPlay();
+
+    const playerChoice = e.target.getAttribute('id');
+
+    const result = document.getElementById('round-result');
+
     if (computerChoice === 'Rock') {
         switch (playerChoice.toLowerCase()) {
             case 'rock':
-                return 'Tie! Rock ties with another rock.';
+                result.textContent = 'Tie! Rock ties with another rock.';
                 break;
             case 'paper':
-                return 'You win! Paper beats rock.';
+                result.textContent = 'You win! Paper beats rock.';
                 break;
             case 'scissors':
-                return 'You lose! Scissors loses to rock.';
+                result.textContent = 'You lose! Scissors loses to rock.';
                 break;
         }
 
     } else if (computerChoice === 'Paper') {
         switch (playerChoice.toLowerCase()) {
             case 'rock':
-                return 'You lose! Rock loses to paper.';
+                result.textContent =  'You lose! Rock loses to paper.';
                 break;
             case 'paper':
-                return 'Tie! Paper ties with another paper.';
+                result.textContent = 'Tie! Paper ties with another paper.';
                 break;
             case 'scissors':
-                return 'You win! Scissors beats paper.';
+                result.textContent = 'You win! Scissors beats paper.';
                 break;
         }
 
     } else if (computerChoice === 'Scissors') {
         switch (playerChoice.toLowerCase()) {
             case 'rock':
-                return 'You win! Rock beats scissors.';
+                result.textContent = 'You win! Rock beats scissors.';
                 break;
             case 'paper':
-                return 'You lose! Paper loses to scissors.';
+                result.textContent = 'You lose! Paper loses to scissors.';
                 break;
             case 'scissors':
-                return 'Tie! Scissors ties with another scissors.';
+                result.textContent = 'Tie! Scissors ties with another scissors.';
                 break;
         }
 
@@ -101,4 +108,6 @@ function displayResult(playerPoint, computerPoint) {
     }
 }
 
-game();
+const gameButtons = document.querySelectorAll('#button-container');
+
+gameButtons.forEach( button => button.addEventListener('click', playRound) );
