@@ -2,28 +2,57 @@
 <html>
     <head>
         <meta charset="utf-8">
+        <title>Rock, Paper, Scissors</title>
         <script src="scripts/main.js" defer></script>
+        <link rel="stylesheet" href="style.css">
+        <link href="https://fonts.googleapis.com/css?family=Rajdhani&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Bebas+Neue&display=swap" rel="stylesheet"> 
     </head>
     <body>
-        <div id="game-result">
-            <div id="player-point">
-                <p>Player Point: </p>
-                <span>0</span>
+        <div id="game-board">
+            <div id="player-area">
+                <div id="player-name">Computer</div>
+                <div class="button-container" id="computer-hand">
+                    <button id="rock">Rock</button>
+                    <button id="paper">Paper</button>
+                    <button id="scissors">Scissors</button>
+                </div>
             </div>
-            <div id="computer-point">
-                <p>Computer Point: </p>
-                <span>0</span>
+            <div id="game-result">
+                <div class="scoreboard" id="player-point">
+                    <span id="title">Player Point</span>
+                    <span id="score">0</span>
+                </div>
+                <div class="scoreboard" id="round-number">
+                    <span id="title">Round</span>
+                    <span id="score">1</span>
+                </div>
+                <div class="scoreboard" id="computer-point">
+                    <span id="title">Computer Point</span>
+                    <span id="score">0</span>
+                </div>
             </div>
-            <div id="round-number">
-                <p>Round Number: </p>
-                <span>1</span>
+            <div id="round-result">
+                
             </div>
-        </div>
-        <div id="round-result"></div>
-        <div id="button-container">
-            <button id="rock">Rock</button>
-            <button id="paper">Paper</button>
-            <button id="scissors">Scissors</button>
+            <div id="player-area">
+                <div class="button-container" id="player-divs">
+                    <button class="rock">
+                        <span>Rock</span>
+                        <span id="keybind">Key: A</span>
+                    </button>
+                    <button class="paper">
+                        <span>Paper</span>
+                        <span id="keybind">Key: S</span>
+                    </button>
+                    <button class="scissors">
+                        <span >Scissors</span>
+                        <span id="keybind">Key: D</span>
+                    </div>
+                </div>
+                <div id="player-name">Player 1: You</div>
+            </div>
         </div>
     </body>
 </html>

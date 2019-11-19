@@ -1,7 +1,5 @@
 'use strict';
 
-// Use the transition effect that we just learned to display the computer choice.
-
 function computerPlay() {
     switch (Math.floor(Math.random() * 3)) {
         case 0:
@@ -21,7 +19,10 @@ function playRound(e) {
 
     const computerChoice = computerPlay();
 
-    const playerChoice = e.target.getAttribute('id');
+    const playerChoice = e.target.getAttribute('class');
+    e.target.classList.add('button-effect');
+
+    document.getElementById(computerChoice.toLowerCase()).classList.add('button-effect');
 
     const result = document.getElementById('round-result');
 
@@ -71,28 +72,28 @@ function playRound(e) {
 
 function roundResult() {
     let playerPoint = 
-        document.querySelector('#player-point span'),
+        document.querySelector('#player-point span:last-child'),
     computerPoint = 
-        document.querySelector('#computer-point span'),
+        document.querySelector('#computer-point span:last-child'),
     roundNumber = 
-        document.querySelector('#round-number span'),
+        document.querySelector('#round-number span:last-child'),
     result = document.getElementById('round-result');
     
-    if (+playerPoint.textContent < 5 && +computerPoint.textContent < 5) {
-        if (result.textContent.includes('You win!')) {
-            playerPoint.textContent = +playerPoint.textContent + 1;
-        } else if (result.textContent.includes('You lose!')) {
-            computerPoint.textContent = +computerPoint.textContent + 1;
-        } else if (result.textContent.includes('Tie!')) {
-            playerPoint.textContent = +playerPoint.textContent + 1;
-            computerPoint.textContent = +computerPoint.textContent + 1;
-        }
     
-        roundNumber.textContent = +roundNumber.textContent + 1;
-    } else {
-        gameEnd(playerPoint, computerPoint);
+    if (result.textContent.includes('You win!')) {
+        playerPoint.textContent = +playerPoint.textContent + 1;
+    } else if (result.textContent.includes('You lose!')) {
+        computerPoint.textContent = +computerPoint.textContent + 1;
+    } else if (result.textContent.includes('Tie!')) {
+        playerPoint.textContent = +playerPoint.textContent + 1;
+        computerPoint.textContent = +computerPoint.textContent + 1;
     }
 
+    roundNumber.textContent = +roundNumber.textContent + 1;
+
+    if (+playerPoint.textContent == 5 || +computerPoint.textContent == 5) {  
+        gameEnd(playerPoint, computerPoint);  
+    }
 }
 
 function gameEnd(playerPoint, computerPoint) {
@@ -115,7 +116,7 @@ function gameEnd(playerPoint, computerPoint) {
 }
 
 function gameResultDisplay(gameMessage) {
-    const buttonContainer = document.getElementById("button-container");
+    const buttonContainer = document.getElementById("player-divs");
     while (buttonContainer.firstChild) {
         buttonContainer.removeChild(buttonContainer.firstChild);
     }
@@ -136,6 +137,17 @@ function gameReset() {
 }
 
 
-const gameButtons = document.querySelectorAll('#button-container');
+const gameButtons = document.querySelectorAll('#player-divs');
 
 gameButtons.forEach( button => button.addEventListener('click', playRound) );
+gameButtons.forEach( button => button.addEventListener('transitionend', function(e) {
+    if (e.propertyName !== 'transform') return;
+    e.target.classList.remove('button-effect');
+}) );
+
+const computerHands = document.querySelectorAll('#computer-hand');
+
+computerHands.forEach( button => button.addEventListener('transitionend', function(e) {
+    if (e.propertyName !== 'transform') return;
+    e.target.classList.remove('button-effect');
+}) );
