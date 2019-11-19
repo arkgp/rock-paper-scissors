@@ -98,7 +98,8 @@ function roundResult() {
 
     roundNumber.textContent = +roundNumber.textContent + 1;
 
-    if (+playerPoint.textContent == 5 || +computerPoint.textContent == 5) {  
+    if ( (+playerPoint.textContent >= 5 && +computerPoint.textContent < 5) || 
+         (+computerPoint.textContent >= 5 && +playerPoint.textContent < 5) ) {  
         gameEnd(playerPoint, computerPoint);  
     }
 }
