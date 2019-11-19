@@ -1,14 +1,42 @@
-html, body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    margin: 0;
-    padding: 0;
+body {
+    background-image: url('images/background.jpg');
 }
 
-body {
- background-image: url('images/background.jpg');
+button > * {
+    pointer-events: none;
+}
+
+.button-container {
+    display: flex;
+    justify-content: space-between;
+
+    flex-basis: 100%;
+}
+
+.button-container button {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 0px;
+    margin: 5px;
+
+    background-color: rgba(0,0,0,0.8);
+    border: .3rem solid black;
+    border-radius: .5rem;
+    color: white;
+    cursor: pointer;
+    font-family: 'Rajdhani';
+    font-size: 3rem;
+    font-weight: 900;
+    text-align: center;
+    transition: all 0.7s ease;
+    user-select: none;
+}
+
+.button-effect {
+    transform: scale(1.1);
+
+    border-color: #1eb019 !important;
+    box-shadow: 0 0 1rem #1eb019;
 }
 
 #game-board {
@@ -17,13 +45,15 @@ body {
     height: 650px;
     width: 800px;
 }
+
 #game-result {
     display: flex;
     justify-content: center;
     align-items: center;
-    text-align: center;
-
     padding-top: 10px;
+
+    text-align: center;
+    user-select: none;
 }
 
 #game-result div {
@@ -33,27 +63,20 @@ body {
     margin: 10px;
 }
 
-.button-container {
-    flex-basis: 100%;
+html, body {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    margin: 0;
+    padding: 0;
 }
 
-#player-area:first-child {
-    margin-bottom: 10px;
-}
+#keybind {
+    margin-top: 5px;
 
-.button-container button {
-    flex: 1 1 0px;
-    text-align: center;
-
-    transition: all 0.7s ease;
-}
-
-#player-name {
-    font-family: 'Bebas Neue', cursive;
-    text-align: center;
-    font-size: 2rem;
+    color: #1eb019;
+    font-size: 1.5rem;
 }
 
 #player-area {
@@ -61,20 +84,15 @@ body {
     padding: 10px;
 }
 
-.button-container button {
-    display: flex;
-    flex-direction: column;
+#player-area:first-child {
+    margin-bottom: 10px;
+}
 
-    background-color: rgba(0,0,0,0.8);
-    margin: 5px;
-    border: .3rem solid black;
-    border-radius: .5rem;
-    cursor: pointer;
-    user-select: none;
-    font-family: 'Rajdhani';
-    font-size: 3rem;
-    font-weight: 900;
-    color: white;
+#player-name {
+    font-family: 'Bebas Neue', cursive;
+    font-size: 2rem;
+
+    text-align: center;
 }
 
 #player-divs button:hover {
@@ -82,21 +100,16 @@ body {
     border-color: #1eb019;
 }
 
-#keybind {
-    margin-top: 5px;
-    font-size: 1.5rem;
-    color: #1eb019;
-}
-
 #round-result {
-    margin: 0 10px;
+    margin: 0 10px 15px;
     height: 25px;
+    padding: 10px;
+
     background: rgba(0,0,0,0.9);
     color: #326ead;
     font-weight: bold;
-    padding: 10px;
     text-align: center;
-    margin-bottom: 10px;
+    user-select: none;
 }
 
 #score {
@@ -104,25 +117,16 @@ body {
     font-size: 6rem;
 }
 
-#title {
-    font-family: 'Bebas Neue', cursive;
-    font-size: 2rem;
-    color: #326ead;
-}
-
 .scoreboard {
-    background: rgba(0,0,0,0.9);
-    color: white;
     padding: 5px;
     margin: 5px;
+
+    background: rgba(0,0,0,0.9);
+    color: white;
 }
 
-.button-effect {
-    transform: scale(1.1);
-    border-color: #1eb019 !important;
-    box-shadow: 0 0 1rem #1eb019;
-}
-
-button > * {
-    pointer-events: none;
+#title {
+    color: #326ead;
+    font-family: 'Bebas Neue', cursive;
+    font-size: 2rem;
 }
