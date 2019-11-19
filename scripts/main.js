@@ -18,9 +18,16 @@ function computerPlay() {
 function playRound(e) {
 
     const computerChoice = computerPlay();
+    let playerChoice;
 
-    const playerChoice = e.target.getAttribute('class');
-    e.target.classList.add('button-effect');
+    if (e.target.localName === 'body') {
+        const button = document.querySelector(`button[data-key='${e.keyCode}'`);
+        playerChoice = button.className;
+        button.classList.add('button-effect');
+    } else {
+        playerChoice = e.target.getAttribute('class');
+        e.target.classList.add('button-effect');
+    }
 
     document.getElementById(computerChoice.toLowerCase()).classList.add('button-effect');
 
@@ -151,3 +158,9 @@ computerHands.forEach( button => button.addEventListener('transitionend', functi
     if (e.propertyName !== 'transform') return;
     e.target.classList.remove('button-effect');
 }) );
+
+window.addEventListener('keydown', function(keyDown) {
+    const hand = document.querySelector(`button[data-key='${keyDown.keyCode}'`);
+    let test = keyDown.target.localName;
+    playRound(keyDown);
+  });
